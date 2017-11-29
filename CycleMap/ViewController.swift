@@ -7,17 +7,31 @@
 //
 
 import UIKit
+import MapKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, MKMapViewDelegate {
 
+    @IBOutlet weak var mapView: MKMapView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        addCycleMap()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func addCycleMap() {
+        let overlay = MKTileOverlay(urlTemplate: "https://jonilassila.com/api/CycleMap/GetMap/?zoom={z}&x={x}&y={y}")
+        overlay.canReplaceMapContent = true
+        overlay.tileSize = CGSize(width: 512, height: 512)
+        self.mapView.add(overlay)
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if overlay is MKTileOverlay {
+            return MKTileOverlayRenderer(overlay: overlay)
+        }
+        
+        return MKOverlayRenderer()
     }
 
 
