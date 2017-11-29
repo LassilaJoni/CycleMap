@@ -71,7 +71,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="CycleMap" id="WBD-Ff-Cfx">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="search" id="Qo4-IS-r6C">
+                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="Qo4-IS-r6C">
                             <connections>
                                 <action selector="searchButton:" destination="BYZ-38-t0r" id="Met-99-MJg"/>
                             </connections>

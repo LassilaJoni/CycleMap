@@ -57,7 +57,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 
 //                Zooming in on a annotation
                 let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude!, longitude!)
-                let span  = MKCoordinateSpanMake(0.1, 0.1)
+                let span  = MKCoordinateSpanMake(0.2, 0.2)
                 let region=MKCoordinateRegionMake(coordinate, span)
                 self.mapView.setRegion(region, animated: true)
                 
