@@ -48,8 +48,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let askedForReview = UserDefaults.standard.bool(forKey: "AskedForReview")
         
         if appLaunchCount >= 5 && !askedForReview {
-            SKStoreReviewController.requestReview()
-            UserDefaults.standard.set(true, forKey: "AskedForReview")
+            if #available(iOS 10.3, *) {
+                SKStoreReviewController.requestReview()
+                UserDefaults.standard.set(true, forKey: "AskedForReview")
+            }
         }
         
         UserDefaults.standard.set(appLaunchCount+1, forKey: "AppLaunchCount")
