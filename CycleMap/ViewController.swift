@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import StoreKit
 
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
@@ -23,6 +24,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         super.viewDidLoad()
         addCycleMap()
         setupLocationManager()
+        begForReviews()
     }
     
     func addCycleMap() {
@@ -37,6 +39,18 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
         self.locationButton.mapView = mapView
+    }
+    
+    func begForReviews() {
+        let appLaunchCount = UserDefaults.standard.integer(forKey: "AppLaunchCount")
+        let askedForReview = UserDefaults.standard.bool(forKey: "AskedForReview")
+        
+        if appLaunchCount >= 5 && !askedForReview {
+            SKStoreReviewController.requestReview()
+            UserDefaults.standard.set(true, forKey: "AskedForReview")
+        }
+        
+        UserDefaults.standard.set(appLaunchCount+1, forKey: "AppLaunchCount")
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
