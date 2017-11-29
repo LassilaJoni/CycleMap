@@ -14,6 +14,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var locationButton: MKUserTrackingBarButtonItem!
+    @IBOutlet weak var speedLabel: UILabel!
     
     let locationManager = CLLocationManager()
     
@@ -37,6 +38,21 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.locationManager.startUpdatingLocation()
         self.locationButton.mapView = mapView
     }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.first else {
+            return
+        }
+        var speedKmh = location.speed * 3.6
+        
+        if speedKmh < 0 {
+            speedKmh = 0
+        }
+        
+        self.speedLabel.text = "\(Int(speedKmh)) km/h"
+        
+    }
+    
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if overlay is MKTileOverlay {
