@@ -12,7 +12,7 @@ import CoreLocation
 import StoreKit
 
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
-
+    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var locationButton: MKUserTrackingBarButtonItem!
     @IBOutlet weak var speedLabel: UILabel!
@@ -58,12 +58,19 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             return
         }
         var speedKmh = location.speed * 3.6
+        var speedMph = location.speed / 0.44704
         
-        if speedKmh < 0 {
+        if speedKmh < 0 || speedMph < 0 {
             speedKmh = 0
+            speedMph = 0
         }
         
-        self.speedLabel.text = "\(Int(speedKmh)) km/h"
+        if Locale.current.usesMetricSystem{
+            self.speedLabel.text = "\(Int(speedKmh)) km/h"
+            
+        } else {
+            self.speedLabel.text = "\(Int(speedMph)) mph"
+        }
         
     }
     
@@ -75,7 +82,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         return MKOverlayRenderer()
     }
-
-
+    
 }
 
