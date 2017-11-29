@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  CycleMap
+
+  Created by Joni Lassila on 29/11/2017.
+  Copyright © 2017 Joni Lassila. All rights reserved.
+*/
+
+"CFBundleName" = "Pyöräilykartat";
+"NSLocationWhenInUseUsageDescription" = "Käytämme sijaintitietoja näyttääksemme sinut kartalla.";

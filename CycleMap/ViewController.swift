@@ -22,6 +22,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = NSLocalizedString("Cycling Maps", comment: "View Controller's title")
+        
         addCycleMap()
         setupLocationManager()
         begForReviews()
@@ -65,7 +67,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             speedMph = 0
         }
         
-        if Locale.current.usesMetricSystem{
+        if Locale.current.usesMetricSystem {
             self.speedLabel.text = "\(Int(speedKmh)) km/h"
             
         } else {
