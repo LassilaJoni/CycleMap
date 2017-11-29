@@ -8,22 +8,34 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
-class ViewController: UIViewController, MKMapViewDelegate {
+class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var locationButton: MKUserTrackingBarButtonItem!
+    
+    let locationManager = CLLocationManager()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addCycleMap()
+        setupLocationManager()
     }
     
     func addCycleMap() {
         let overlay = MKTileOverlay(urlTemplate: "https://jonilassila.com/api/CycleMap/GetMap/?zoom={z}&x={x}&y={y}")
         overlay.canReplaceMapContent = true
         overlay.tileSize = CGSize(width: 512, height: 512)
-        self.mapView.add(overlay)
+        mapView.add(overlay)
+    }
+    
+    func setupLocationManager() {
+        self.locationManager.delegate = self
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
+        self.locationButton.mapView = mapView
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {

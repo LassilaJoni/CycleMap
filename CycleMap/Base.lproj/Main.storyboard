@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7zx-Fs-pnm">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsBuildings="NO" showsPointsOfInterest="NO" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7zx-Fs-pnm">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="5ec-8x-Wmw"/>
@@ -34,8 +34,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="WBD-Ff-Cfx"/>
+                    <navigationItem key="navigationItem" id="WBD-Ff-Cfx">
+                        <barButtonItem key="rightBarButtonItem" title="(Location)" id="00v-5W-llH" customClass="MKUserTrackingBarButtonItem"/>
+                    </navigationItem>
                     <connections>
+                        <outlet property="locationButton" destination="00v-5W-llH" id="c1k-6I-uFe"/>
                         <outlet property="mapView" destination="7zx-Fs-pnm" id="s7f-Mr-BBC"/>
                     </connections>
                 </viewController>
