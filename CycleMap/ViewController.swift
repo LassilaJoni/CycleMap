@@ -25,7 +25,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     func addCycleMap() {
-        let overlay = MKTileOverlay(urlTemplate: "https://jonilassila.com/api/CycleMap/GetMap/?zoom={z}&x={x}&y={y}")
+        let overlay = MKTileOverlay(urlTemplate: "https://tile.thunderforest.com/cycle/{z}/{x}/{y}@2x.png?apikey=7760545f91504c6591737b342641aae3")
         overlay.canReplaceMapContent = true
         overlay.tileSize = CGSize(width: 512, height: 512)
         mapView.add(overlay)
