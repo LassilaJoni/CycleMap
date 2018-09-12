@@ -33,12 +33,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             searchController.searchBar.delegate = self
         }
     }
+
     
     func addCycleMap() {
         let overlay = MKTileOverlay(urlTemplate: "https://tile.thunderforest.com/cycle/{z}/{x}/{y}@2x.png?apikey=7760545f91504c6591737b342641aae3")
         overlay.canReplaceMapContent = true
         overlay.tileSize = CGSize(width: 512, height: 512)
-        mapView.add(overlay)
+        mapView.addOverlay(overlay)
     }
     
     func setupLocationManager() {
@@ -84,6 +85,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     
+    
+    
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if overlay is MKTileOverlay {
             return MKTileOverlayRenderer(overlay: overlay)
@@ -96,7 +99,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.navigationItem.searchController?.resignFirstResponder()
         self.navigationItem.searchController?.dismiss(animated: true, completion: nil)
         
-        let searchRequest = MKLocalSearchRequest()
+        let searchRequest = MKLocalSearch.Request()
         searchRequest.naturalLanguageQuery = searchBar.text
         
         MKLocalSearch(request: searchRequest).start { (response, error) in
@@ -120,8 +123,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             annotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
             self.mapView.addAnnotation(annotation)
             
-            let span = MKCoordinateSpanMake(0.06, 0.06)
-            let region = MKCoordinateRegionMake(annotation.coordinate, span)
+            let span = MKCoordinateSpan.init(latitudeDelta: 0.06, longitudeDelta: 0.06)
+            let region = MKCoordinateRegion.init(center: annotation.coordinate, span: span)
             self.mapView.setRegion(region, animated: true)
             
         }
