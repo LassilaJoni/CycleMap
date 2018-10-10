@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="I0X-JF-6cy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="I0X-JF-6cy">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,10 +14,6 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="CycleMap" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="hcg-WQ-Ajt"/>
-                        <viewControllerLayoutGuide type="bottom" id="c1C-rU-z3t"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,40 +25,38 @@
                                 </connections>
                             </mapView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gsc-kV-i29">
-                                <rect key="frame" x="335" y="96" width="24" height="30"/>
+                                <rect key="frame" x="335" y="752" width="24" height="34"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="h6r-sk-mbj">
-                                    <rect key="frame" x="0.0" y="0.0" width="24" height="30"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="24" height="34"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vvr-HK-yur">
-                                            <rect key="frame" x="8" y="0.0" width="8" height="30"/>
+                                            <rect key="frame" x="8" y="8" width="8" height="18"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="vvr-HK-yur" secondAttribute="trailing" id="JoT-Uc-VLG"/>
-                                        <constraint firstItem="vvr-HK-yur" firstAttribute="top" secondItem="h6r-sk-mbj" secondAttribute="top" id="ut2-Ci-r4m"/>
-                                        <constraint firstAttribute="bottom" secondItem="vvr-HK-yur" secondAttribute="bottom" id="uuy-bn-fIh"/>
-                                        <constraint firstItem="vvr-HK-yur" firstAttribute="leading" secondItem="h6r-sk-mbj" secondAttribute="leadingMargin" id="uwF-Sg-7F2"/>
+                                        <constraint firstItem="vvr-HK-yur" firstAttribute="leading" secondItem="h6r-sk-mbj" secondAttribute="leadingMargin" id="B5r-O5-bhg"/>
+                                        <constraint firstItem="vvr-HK-yur" firstAttribute="trailing" secondItem="h6r-sk-mbj" secondAttribute="trailingMargin" id="HfT-Pq-eOQ"/>
+                                        <constraint firstItem="vvr-HK-yur" firstAttribute="top" secondItem="h6r-sk-mbj" secondAttribute="topMargin" id="Jjv-HS-7wD"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="vvr-HK-yur" secondAttribute="bottom" id="zDR-4T-n3J"/>
                                     </constraints>
                                 </view>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="loC-9F-TpT"/>
-                                </constraints>
                                 <blurEffect style="dark"/>
                             </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="7zx-Fs-pnm" secondAttribute="bottom" id="GJI-qh-XJQ"/>
-                            <constraint firstItem="gsc-kV-i29" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Wio-rx-qkv"/>
-                            <constraint firstAttribute="trailing" secondItem="7zx-Fs-pnm" secondAttribute="trailing" id="fvZ-UW-J7i"/>
-                            <constraint firstItem="7zx-Fs-pnm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="fwD-FZ-vmJ"/>
-                            <constraint firstItem="7zx-Fs-pnm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ifm-CY-bg3"/>
-                            <constraint firstItem="gsc-kV-i29" firstAttribute="top" secondItem="hcg-WQ-Ajt" secondAttribute="bottom" constant="8" symbolic="YES" id="wmX-aQ-WyG"/>
+                            <constraint firstItem="gsc-kV-i29" firstAttribute="bottom" secondItem="J97-kq-skR" secondAttribute="bottom" constant="8" id="1yC-DY-l6r"/>
+                            <constraint firstItem="7zx-Fs-pnm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="7Y9-RP-zCS"/>
+                            <constraint firstAttribute="bottom" secondItem="7zx-Fs-pnm" secondAttribute="bottom" id="AL9-Mu-p5f"/>
+                            <constraint firstItem="7zx-Fs-pnm" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="E6h-AU-Sfo"/>
+                            <constraint firstItem="J97-kq-skR" firstAttribute="trailing" secondItem="gsc-kV-i29" secondAttribute="trailing" constant="16" id="NMr-fS-KGx"/>
+                            <constraint firstItem="7zx-Fs-pnm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="VL9-de-Ve0"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="J97-kq-skR"/>
                     </view>
                     <navigationItem key="navigationItem" title="CycleMap" id="WBD-Ff-Cfx">
                         <barButtonItem key="rightBarButtonItem" title="(Location)" id="00v-5W-llH" customClass="MKUserTrackingBarButtonItem"/>
