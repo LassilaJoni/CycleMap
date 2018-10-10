@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		35AFEA9A1FCE9B2100022F70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AFEA991FCE9B2100022F70 /* AppDelegate.swift */; };
-		35AFEA9C1FCE9B2100022F70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AFEA9B1FCE9B2100022F70 /* ViewController.swift */; };
+		35AFEA9C1FCE9B2100022F70 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AFEA9B1FCE9B2100022F70 /* MapViewController.swift */; };
 		35AFEA9F1FCE9B2100022F70 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35AFEA9D1FCE9B2100022F70 /* Main.storyboard */; };
 		35AFEAA11FCE9B2100022F70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35AFEAA01FCE9B2100022F70 /* Assets.xcassets */; };
 		35AFEAA41FCE9B2100022F70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35AFEAA21FCE9B2100022F70 /* LaunchScreen.storyboard */; };
@@ -19,7 +19,7 @@
 /* Begin PBXFileReference section */
 		35AFEA961FCE9B2000022F70 /* CycleMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CycleMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35AFEA991FCE9B2100022F70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		35AFEA9B1FCE9B2100022F70 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		35AFEA9B1FCE9B2100022F70 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		35AFEA9E1FCE9B2100022F70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		35AFEAA01FCE9B2100022F70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35AFEAA31FCE9B2100022F70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -61,16 +61,32 @@
 		35AFEA981FCE9B2000022F70 /* CycleMap */ = {
 			isa = PBXGroup;
 			children = (
+				35D9DF10216DF7C100916A55 /* View */,
+				35D9DF11216DF7C900916A55 /* Resources */,
 				35AFEA991FCE9B2100022F70 /* AppDelegate.swift */,
-				35AFEA9B1FCE9B2100022F70 /* ViewController.swift */,
+			);
+			path = CycleMap;
+			sourceTree = "<group>";
+		};
+		35D9DF10216DF7C100916A55 /* View */ = {
+			isa = PBXGroup;
+			children = (
 				35AFEA9D1FCE9B2100022F70 /* Main.storyboard */,
+				35AFEA9B1FCE9B2100022F70 /* MapViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		35D9DF11216DF7C900916A55 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				35AFEAA01FCE9B2100022F70 /* Assets.xcassets */,
 				35AFEAA21FCE9B2100022F70 /* LaunchScreen.storyboard */,
 				35AFEAA51FCE9B2100022F70 /* Info.plist */,
 				35AFEAAF1FCEC2D700022F70 /* Localizable.strings */,
 				35AFEAB51FCEC3A400022F70 /* InfoPlist.strings */,
 			);
-			path = CycleMap;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,7 +165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35AFEA9C1FCE9B2100022F70 /* ViewController.swift in Sources */,
+				35AFEA9C1FCE9B2100022F70 /* MapViewController.swift in Sources */,
 				35AFEA9A1FCE9B2100022F70 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,7 +330,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NF27GKZ6NQ;
-				INFOPLIST_FILE = CycleMap/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/CycleMap/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -332,7 +348,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NF27GKZ6NQ;
-				INFOPLIST_FILE = CycleMap/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/CycleMap/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

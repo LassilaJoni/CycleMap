@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MapViewController.swift
 //  CycleMap
 //
 //  Created by Joni Lassila on 29/11/2017.
@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 import StoreKit
 
-class ViewController: UIViewController {
+class MapViewController: UIViewController {
 	
 	// MARK Outlets
 	
@@ -78,7 +78,7 @@ class ViewController: UIViewController {
 
 // MARK: MKMapViewDelegate
 
-extension ViewController: MKMapViewDelegate {
+extension MapViewController: MKMapViewDelegate {
 	func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
 		return MKTileOverlayRenderer(overlay: overlay)
 	}
@@ -86,7 +86,7 @@ extension ViewController: MKMapViewDelegate {
 
 // MARK: CLLocationManagerDelegate
 
-extension ViewController: CLLocationManagerDelegate {
+extension MapViewController: CLLocationManagerDelegate {
 	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 		guard let location = locations.first else {
 			return
@@ -112,7 +112,7 @@ extension ViewController: CLLocationManagerDelegate {
 
 // MARK: UISearchBarDelegate
 
-extension ViewController: UISearchBarDelegate {
+extension MapViewController: UISearchBarDelegate {
 	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
 		navigationItem.searchController?.resignFirstResponder()
 		navigationItem.searchController?.dismiss(animated: true, completion: nil)
@@ -120,18 +120,11 @@ extension ViewController: UISearchBarDelegate {
 		let searchRequest = MKLocalSearch.Request()
 		searchRequest.naturalLanguageQuery = searchBar.text
 		
-		MKLocalSearch(request: searchRequest).start { (response, error) in
-			if let error = error {
-				print(error)
+		MKLocalSearch(request: searchRequest).start { response, error in
+			guard let response = response, error == nil else {
+				print(error?.localizedDescription ?? "")
 				return
 			}
-			
-			guard let response = response else {
-				return
-			}
-			
-			let annotations = self.mapView.annotations
-			self.mapView.removeAnnotations(annotations)
 			
 			let latitude = response.boundingRegion.center.latitude
 			let longitude = response.boundingRegion.center.longitude
@@ -140,10 +133,12 @@ extension ViewController: UISearchBarDelegate {
 			annotation.title = searchBar.text
 			annotation.subtitle = response.mapItems.first?.name
 			annotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+			
 			self.mapView.addAnnotation(annotation)
 			
 			let span = MKCoordinateSpan.init(latitudeDelta: 0.06, longitudeDelta: 0.06)
 			let region = MKCoordinateRegion.init(center: annotation.coordinate, span: span)
+			
 			self.mapView.setRegion(region, animated: true)
 			
 		}
