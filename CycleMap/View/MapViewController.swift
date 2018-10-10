@@ -17,7 +17,9 @@ class MapViewController: UIViewController {
 	
 	@IBOutlet private var mapView: MKMapView!
 	@IBOutlet private var locationButton: MKUserTrackingBarButtonItem!
-	@IBOutlet private var speedLabel: UILabel!
+    
+    @IBOutlet private var speedContainerView: UIVisualEffectView!
+    @IBOutlet private var speedLabel: UILabel!
 	
 	// MARK: Stored Properties
 	
@@ -29,16 +31,24 @@ class MapViewController: UIViewController {
 		super.viewDidLoad()
 		title = NSLocalizedString("Cycling Maps", comment: "View Controller's title")
 		
+		// Speed Label
+		
+		speedContainerView.layer.cornerRadius = 10
+		speedContainerView.clipsToBounds = true
+		
+		speedContainerView.alpha = 0
+		
+		// Setup
+		
 		addOverlay()
 		setupLocationManager()
 		checkRateStatus()
 		
-		let searchController = UISearchController(searchResultsController: nil)
+		// Search
 		
-		if #available(iOS 11.0, *) {
+		let searchController = UISearchController(searchResultsController: nil)
 			navigationItem.searchController = searchController
 			searchController.searchBar.delegate = self
-		}
 	}
 	
 	// MARK: Private Methods
@@ -58,6 +68,7 @@ class MapViewController: UIViewController {
 		locationManager.delegate = self
 		locationManager.requestWhenInUseAuthorization()
 		locationManager.startUpdatingLocation()
+		
 		locationButton.mapView = mapView
 	}
 	
@@ -92,21 +103,15 @@ extension MapViewController: CLLocationManagerDelegate {
 			return
 		}
 		
-		var speedKmh = location.speed * 3.6
-		var speedMph = location.speed / 0.44704
-		
-		if speedKmh < 0 || speedMph < 0 {
-			speedKmh = 0
-			speedMph = 0
-		}
+		speedContainerView.alpha = (location.speed > 0) ? 1 : 0
 		
 		if Locale.current.usesMetricSystem {
-			speedLabel.text = "\(Int(speedKmh)) km/h"
-			
+			let speed = location.speed * 3.6
+			speedLabel.text = String(format: "%i km/h", (speed > 0) ? Int(speed) : 0)
 		} else {
-			speedLabel.text = "\(Int(speedMph)) mph"
+			let speed = location.speed / 0.44704
+			speedLabel.text = String(format: "%i mph", (speed > 0) ? Int(speed) : 0)
 		}
-		
 	}
 }
 
