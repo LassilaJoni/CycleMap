@@ -54,7 +54,7 @@ class MapViewController: UIViewController {
 	// MARK: Private Methods
 	
 	private func addOverlay() {
-		let apiKey = "7760545f91504c6591737b342641aae3"
+		let apiKey = ""
 		
 		let overlay = MKTileOverlay(urlTemplate: String(format: "https://tile.thunderforest.com/cycle/{z}/{x}/{y}@2x.png?apikey=%@", apiKey))
 		
